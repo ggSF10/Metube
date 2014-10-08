@@ -1,0 +1,8 @@
+<div>
+<h2>Videos</h2>
+		<ul>
+    		<li><%= @video.title %> uploaded by <%= @video.author.name %> <%=link_to "Click to View", "http://" + @video.url%></li>
+		</ul>
+		<%= button_to "delete", {:controller => :videos,
+      :action => 'destroy', :id => @video.id }, :method => :delete %>
+</div>

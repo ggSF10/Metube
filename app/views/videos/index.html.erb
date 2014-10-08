@@ -1,0 +1,12 @@
+<div>
+<h2>Videos</h2>
+<% if @videos %> 
+		<ul>
+  		<% @videos.each do |video| %>
+    		<li> <%= video.title %> uploaded by <%= video.author.name %> <%=link_to "Click to View", "http://" + video.url %> 
+    				 <%= link_to "Delete" :confirm => 'Are you sure you want to delete ' + video.title + '?' %>
+    		</li>
+  		<% end %>
+		</ul>
+<% end %>
+</div>
