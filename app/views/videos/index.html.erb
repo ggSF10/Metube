@@ -3,9 +3,11 @@
 <% if @videos %> 
 		<ul>
   		<% @videos.each do |video| %>
-    		<li> <%= video.title %> uploaded by <%= video.author.name %> <%=link_to "Click to View", "http://" + video.url %> 
-    				 <%= link_to "Delete" :confirm => 'Are you sure you want to delete ' + video.title + '?' %>
-    		</li>
+    		<ul> <h4><%= video.title %> </h4>
+    				 <h5>uploaded by <%= video.author.name %></h5>
+    				 <%=button_to "Click to View", video.url %> 
+    				 <%= button_to "delete", {:controller => :videos,
+     				 :action => 'destroy', :id => video.id }, :method => :delete %>
   		<% end %>
 		</ul>
 <% end %>

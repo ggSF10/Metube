@@ -11,12 +11,14 @@ class VideosController < ApplicationController
 
   #new video creation form - GET /videos/new
   def new
- 		@video = Video.new
+ 		@video = current_user.videos.new
+ 		# this is identical to the following:
+ 		# @video = Video.new(author_id: current_user.id)
   end
 
   #create a new video - POST /videos
   def create
-  	@video = Video.new(params)
+  	@video = current_user.videos.new(params)
 		if @video.save
     	redirect_to @video
   	else
