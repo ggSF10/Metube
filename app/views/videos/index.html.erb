@@ -1,3 +1,5 @@
+
+
 <div>
 <h2>Videos</h2>
 <% if @videos %> 
@@ -14,5 +16,6 @@
 </div>
 
 <div>
-<%= button_to 'Upload new video', :action => 'new' %>
+<%= button_to 'Upload new video', :method => 'videos/new' %>
 </div>
+
