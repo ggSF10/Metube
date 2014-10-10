@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :videos, foreign_key: "author_id"
-
-  validates :email, presence: true
+	
+	validates :name, presence: true
+  validates :email, uniqueness: true, presence: true
 end

@@ -1,21 +1,13 @@
 
-
-<div>
-<h2>Videos</h2>
+<ul>
 <% if @videos %> 
-		<ul>
-  		<% @videos.each do |video| %>
-    		<ul> <h4><%= video.title %> </h4>
-    				 <h5>uploaded by <%= video.author.name %></h5>
-    				 <%=button_to "Click to View", video.url %> 
-    				 <%= button_to "delete", {:controller => :videos,
-     				 :action => 'destroy', :id => video.id }, :method => :delete %>
-  		<% end %>
-		</ul>
-<% end %>
-</div>
-
-<div>
-<%= button_to 'Upload new video', :method => 'videos/new' %>
-</div>
-
+  <%@videos.each do |video|%>
+    <li><%=link_to video.title, video.url%> | <%=link_to 'details', video%>
+    <%if current_user == video.author%>
+      | <%=link_to 'edit', '/videos/'+video.id.to_s+'/edit'%> | <%=link_to 'delete', '/videos'+video.id.to_s, method: :delete%></li>
+      <%= link_to 'Upload new video', :method => 'videos/new' %>
+      </li>
+    <%end%>
+  <%end%>
+<%end%>
+</ul>

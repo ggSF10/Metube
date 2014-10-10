@@ -1,8 +1,13 @@
-		<nav class="top-bar" data-topbar>
-			<ul class="title-area">
-	  		<li class="name">
-	    		<h1><a href="#">Metube</a></h1>
-	  		</li>
-	  		<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-			</ul>
-		</nav>
+<nav class="top-bar" data-topbar>
+	<ul class="title-area">
+		<li class="name">
+  		<h1><a href="#">Metube</a></h1>
+		</li>
+		<li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+	</ul>
+<% if user_signed_in? %>
+	<ul>
+			<%= button_to('Logout', destroy_user_session_path, :method => :delete) %>        
+	</ul>
+<% end %>
+</nav>
